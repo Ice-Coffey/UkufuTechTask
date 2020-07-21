@@ -116,6 +116,21 @@ Returns - True if it is exclusively those characters, False otherwise.
 
 
 ### tests.py
+Unit and stress tests
+
+#### functions
+fifty_fifty (one, two) - a test specific function that takes in 2 inputs, one and two, and returns one of them at random.
+Return one or two (random)
+
+#### classes
+TestStringMethods - the unit test class that runs each of the following tests.
+
+##### class methods
+test_utils - tests functions in utils.py (currently only check_letters).
+test_area - tests functions in area.py to create grids for the rovers to navigate.
+test_rover_run - comprehensive step by step of a single rover run across a grid.
+test_stress_rover - tests the program with 9998 rovers moving in series.
+test_crash_and_fall - test to make sure rovers don't crash into each other or fall off the grid.
 
 ### errors.py
 Custom errors that are used in other parts of the program that are project specific
