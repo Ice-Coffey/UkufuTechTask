@@ -5,10 +5,10 @@ class Rover:
 	def __init__(self, x, y, direction, instructions, grid):
 		self.x = int(x)
 		self.y = int(y)
-		self.direction = direction
+		self.direction = direction.upper()
 		self.instructions = instructions
 		self.grid = grid
-		self.grid[self.x][self.y] = direction
+		self.grid[self.x][self.y] = self.direction
 
 	def make_move(self):
 		if(not len(self.instructions)):
@@ -100,18 +100,18 @@ def populate(g):
 					raise ValueTooSmallError
 				elif (len(coordinates)>3):
 					raise ValueTooLargeError
-				elif(int(coordinates[0]) and int(coordinates[1])):
-					pass
+				elif(int(coordinates[0])<0 or int(coordinates[1])<0):
+					raise ValueError
 				elif(coordinates[2].lower() not in directions):
 					raise AlphaError
 				break
 
 			except ValueTooSmallError:
-				print('\nYou entered too few arguments, please give both an X and Y coordinate.')
+				print('\nYou entered too few arguments, please give both an X and Y coordinate, and direction.')
 			except ValueTooLargeError:
-				print('\nYou entered too many arguments, please give only an X and Y coordinate.')
+				print('\nYou entered too many arguments, please give only an X and Y coordinate, and direction.')
 			except ValueError as e:
-				print("\nThe coordinates you entered were not integers. Please make sure that your X and Y arguments are both integers.")
+				print("\nThe coordinates you entered were not non negative integers. Please make sure that your X and Y arguments are both non negative integers.")
 			except NumericError:
 				print("\nThe direction you entered was not N, S, E, or W. Please make sure it is a direction")
 
